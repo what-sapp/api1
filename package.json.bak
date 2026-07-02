@@ -3,9 +3,9 @@
   "version": "1.0.0",
   "description": "RHNX API + Tailwind CSS watch all-in-one",
   "type": "module",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
-    "start": "node index.js",
+    "start": "node server.js",
     "tailwind": "npx @tailwindcss/cli -i ./views/css/input.css -o ./views/css/output.css --watch",
     "dev": "concurrently \"npm start\" \"npm run tailwind\""
   },

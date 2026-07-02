@@ -1,0 +1,41 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+
+  --color-primary: #00b6f1;
+  --color-secondary: #f1f5f9;
+  --color-accent: #facc15;
+  --color-hitam: #000000;
+  --gradient-primary: linear-gradient(to bottom, #3db8f5, #1473e6);
+  --gradient-red: linear-gradient(to bottom, #f87171, #dc2626);
+  --font-sans: "Outfit", sans-serif;
+  --font-mono: "Share Tech Mono", monospace;
+}
+
+.bg-gradient-primary {
+  background: var(--gradient-primary);
+}
+
+.bg-gradient-red {
+  background: var(--gradient-red);
+}
+
+@utility text-gradient-primary {
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+@utility text-gradient-indo {
+  background: linear-gradient(to bottom, #ff0000, #ffffff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+@utility text-gradient-yellow {
+  background: linear-gradient(to bottom, #facc15, #eab308);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}

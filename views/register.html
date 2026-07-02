@@ -1,0 +1,419 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Auth | RHNX API</title>
+
+    <script src="https://unpkg.com/feather-icons"></script>
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap"
+      rel="stylesheet"
+    />
+    <link href="/css/output.css" rel="stylesheet" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/intl-tel-input@18.2.1/build/css/intlTelInput.css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/intl-tel-input@18.2.1/build/js/intlTelInput.min.js"></script>
+
+    <style>
+      .toggle-btn {
+        cursor: pointer;
+        padding: 0.45rem 1.6rem;
+        border-radius: 9999px;
+        font-weight: 600;
+        font-size: 0.9rem;
+        color: #6b7280;
+        transition: all 0.25s ease;
+      }
+
+      .toggle-btn:hover {
+        color: #0ea5e9;
+      }
+
+      .toggle-btn.active {
+        background-color: #0ea5e9;
+        color: #ffffff;
+        box-shadow: 0 4px 10px rgba(14, 165, 233, 0.35);
+      }
+
+      #authLoading {
+        display: none;
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.5);
+        z-index: 50;
+        justify-content: center;
+        align-items: center;
+      }
+      #authLoading.active {
+        display: flex;
+      }
+
+      .spinner {
+        border: 4px solid rgba(255, 255, 255, 0.3);
+        border-top: 4px solid #fff;
+        border-radius: 50%;
+        width: 48px;
+        height: 48px;
+        animation: spin 1s linear infinite;
+      }
+
+      .iti {
+        width: 100%;
+      }
+
+      .phone-error {
+        border-color: #ef4444 !important;
+      }
+
+      .phone-error input {
+        color: #ef4444;
+      }
+
+      @keyframes spin {
+        to {
+          transform: rotate(360deg);
+        }
+      }
+    </style>
+  </head>
+
+  <body
+    class="font-mono bg-gray-100 dark:bg-gray-900 min-h-screen flex items-center justify-center p-4"
+  >
+    <div id="authLoading">
+      <div class="spinner"></div>
+    </div>
+
+    <div
+      class="bg-white dark:bg-gray-800 w-full max-w-md rounded-2xl shadow-xl p-8"
+    >
+      <div class="flex justify-center mb-6">
+        <div
+          class="flex rounded-full border border-gray-300 dark:border-gray-600 p-1 bg-white dark:bg-gray-900"
+        >
+          <span id="toggle-login" class="toggle-btn active"> Login </span>
+
+          <span id="toggle-register" class="toggle-btn"> Register </span>
+        </div>
+      </div>
+
+      <form id="loginForm" class="space-y-4">
+        <div class="relative">
+          <i
+            data-feather="user"
+            class="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400"
+          ></i>
+          <input
+            type="text"
+            name="username"
+            placeholder="Username / Email"
+            required
+            class="w-full pl-12 pr-4 py-3 rounded-full border border-gray-300 dark:border-gray-700 bg-gray-50 dark:bg-gray-900"
+          />
+        </div>
+
+        <div class="relative">
+          <i
+            data-feather="lock"
+            class="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400"
+          ></i>
+
+          <input
+            id="login-password"
+            type="password"
+            name="password"
+            placeholder="Password"
+            required
+            class="w-full pl-12 pr-12 py-3 rounded-full border border-gray-300 dark:border-gray-700"
+          />
+
+          <button
+            type="button"
+            onclick="togglePassword('login-password', this)"
+            class="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400"
+          >
+            <i data-feather="eye-off"></i>
+          </button>
+        </div>
+
+        <button
+          type="submit"
+          class="w-full bg-sky-500 hover:bg-sky-600 text-white py-3 rounded-full font-medium"
+        >
+          Login
+        </button>
+
+        <div class="flex items-center gap-3 my-4">
+          <hr class="flex-1 border-gray-300 dark:border-gray-600" />
+          <span class="text-sm text-gray-500">atau</span>
+          <hr class="flex-1 border-gray-300 dark:border-gray-600" />
+        </div>
+
+        <button
+          type="button"
+          id="googleLoginBtn"
+          class="w-full flex items-center justify-center gap-2 border border-gray-300 dark:border-gray-700 py-3 rounded-full hover:bg-gray-100 dark:hover:bg-gray-700"
+        >
+          <img
+            src="https://developers.google.com/identity/images/g-logo.png"
+            class="w-5 h-5"
+          />
+          Login dengan Google
+        </button>
+      </form>
+
+      <form id="registerForm" class="space-y-4 hidden">
+        <input
+          type="text"
+          name="username"
+          placeholder="Username"
+          required
+          class="w-full px-4 py-3 rounded-full border border-gray-300 dark:border-gray-700"
+        />
+
+        <input
+          type="text"
+          name="name"
+          placeholder="Nama Lengkap"
+          required
+          class="w-full px-4 py-3 rounded-full border border-gray-300 dark:border-gray-700"
+        />
+
+        <input
+          type="email"
+          name="email"
+          placeholder="Email"
+          required
+          class="w-full px-4 py-3 rounded-full border border-gray-300 dark:border-gray-700"
+        />
+        <div
+          id="phone-wrapper"
+          class="relative flex items-center gap-3 px-4 py-3 rounded-full border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-900 transition"
+        >
+          <input
+            id="phone"
+            type="tel"
+            name="phone"
+            placeholder="812xxxxxxx"
+            class="flex-1 bg-transparent outline-none text-gray-900 dark:text-white"
+          />
+        </div>
+
+        <div class="relative">
+          <input
+            id="register-password"
+            type="password"
+            name="password"
+            placeholder="Password"
+            required
+            class="w-full px-4 pr-12 py-3 rounded-full border border-gray-300 dark:border-gray-700"
+          />
+
+          <button
+            type="button"
+            onclick="togglePassword('register-password', this)"
+            class="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600"
+          >
+            <i data-feather="eye-off"></i>
+          </button>
+        </div>
+
+        <button
+          type="submit"
+          class="w-full bg-sky-500 hover:bg-sky-600 text-white py-3 rounded-full font-medium"
+        >
+          Register
+        </button>
+
+        <div class="flex items-center gap-3 my-4">
+          <hr class="flex-1 border-gray-300 dark:border-gray-600" />
+          <span class="text-sm text-gray-500">atau</span>
+          <hr class="flex-1 border-gray-300 dark:border-gray-600" />
+        </div>
+
+        <button
+          type="button"
+          id="googleRegisterBtn"
+          class="w-full flex items-center justify-center gap-3 border border-gray-300 dark:border-gray-700 py-3 rounded-full hover:bg-gray-100 dark:hover:bg-gray-700"
+        >
+          <img
+            src="https://developers.google.com/identity/images/g-logo.png"
+            class="w-5 h-5"
+          />
+          Daftar dengan Google
+        </button>
+      </form>
+    </div>
+
+    <script>
+      feather.replace();
+    </script>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        feather.replace();
+
+        const toggleLogin = document.getElementById("toggle-login");
+        const toggleRegister = document.getElementById("toggle-register");
+        const loginForm = document.getElementById("loginForm");
+        const registerForm = document.getElementById("registerForm");
+        const loading = document.getElementById("authLoading");
+
+        function showLogin() {
+          toggleLogin.classList.add("active");
+          toggleRegister.classList.remove("active");
+          loginForm.classList.remove("hidden");
+          registerForm.classList.add("hidden");
+        }
+
+        function showRegister() {
+          toggleRegister.classList.add("active");
+          toggleLogin.classList.remove("active");
+          registerForm.classList.remove("hidden");
+          loginForm.classList.add("hidden");
+        }
+
+        toggleLogin.onclick = showLogin;
+        toggleRegister.onclick = showRegister;
+
+        function showLoading() {
+          loading.classList.add("active");
+        }
+
+        function hideLoading() {
+          loading.classList.remove("active");
+        }
+
+        const phoneInput = document.querySelector("#phone");
+        const phoneWrapper = document.querySelector("#phone-wrapper");
+        const phoneError = document.querySelector("#phone-error");
+
+        const iti = window.intlTelInput(phoneInput, {
+          initialCountry: "id",
+          separateDialCode: true,
+          preferredCountries: ["id", "my", "sg"],
+          nationalMode: true, 
+          autoPlaceholder: "polite",
+          utilsScript:
+            "https://cdn.jsdelivr.net/npm/intl-tel-input@18.2.1/build/js/utils.js",
+        });
+
+        function validatePhone() {
+          if (!phoneInput.value.trim()) {
+            phoneWrapper.classList.remove("phone-error");
+            phoneError.classList.add("hidden");
+            return;
+          }
+
+          if (!iti.isValidNumber()) {
+            phoneWrapper.classList.add("phone-error");
+            phoneError.classList.remove("hidden");
+          } else {
+            phoneWrapper.classList.remove("phone-error");
+            phoneError.classList.add("hidden");
+          }
+        }
+
+        phoneInput.addEventListener("input", validatePhone);
+        phoneInput.addEventListener("blur", validatePhone);
+        phoneInput.addEventListener("countrychange", () => {
+          phoneInput.value = "";
+          validatePhone();
+        });
+
+        loginForm.addEventListener("submit", async (e) => {
+          e.preventDefault();
+          showLoading();
+
+          const formData = new FormData(loginForm);
+
+          try {
+            const res = await fetch("/api/login", {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({
+                username: formData.get("username"),
+                password: formData.get("password"),
+              }),
+            });
+
+            const json = await res.json();
+            hideLoading();
+
+            if (!json.status) return alert(json.message);
+
+            localStorage.setItem("token", json.token);
+            localStorage.setItem("user", JSON.stringify(json.user));
+            window.location.href = "/index.html";
+          } catch (err) {
+            hideLoading();
+            alert("Gagal login");
+          }
+        });
+
+        registerForm.addEventListener("submit", async (e) => {
+          e.preventDefault();
+
+          if (!iti.isValidNumber()) {
+            return alert("Nomor HP tidak valid");
+          }
+
+          showLoading();
+
+          const formData = new FormData(registerForm);
+
+          const payload = {
+            username: formData.get("username"),
+            name: formData.get("name"),
+            email: formData.get("email"),
+            phone: iti.getNumber(),
+            password: formData.get("password"),
+          };
+
+          try {
+            const res = await fetch("/api/register", {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify(payload),
+            });
+
+            const json = await res.json();
+            hideLoading();
+
+            if (!json.status) return alert(json.message);
+
+            alert("Register berhasil, silakan login");
+            registerForm.reset();
+            iti.setCountry("id");
+            showLogin();
+          } catch (err) {
+            hideLoading();
+            alert("Gagal register");
+          }
+        });
+
+        document.getElementById("googleLoginBtn").onclick = () => {
+          showLoading();
+          window.location.href = "/auth/google";
+        };
+
+        document.getElementById("googleRegisterBtn").onclick = () => {
+          showLoading();
+          window.location.href = "/auth/google";
+        };
+      });
+      function togglePassword(inputId, btn) {
+        const input = document.getElementById(inputId);
+        const isHidden = input.type === "password";
+
+        input.type = isHidden ? "text" : "password";
+
+        btn.innerHTML = feather.icons[isHidden ? "eye" : "eye-off"].toSvg();
+      }
+    </script>
+  </body>
+</html>

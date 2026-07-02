@@ -1,0 +1,124 @@
+{
+  "nav": {
+    "home": "Beranda",
+    "docs": "Dokumentasi",
+    "pricing": "Harga",
+    "dashboard": "Dashboard"
+  },
+
+  "home": {
+    "title": "Cari,Akses,dan Gunakan API untuk Mengembangkan Project Atau Aplikasi Anda.",
+    "description": "web api yang menyediakan endpoint siap pakai, cepat, dan mudah diintegrasikan ke <span class=\"text-sky-500\">aplikasi web</span>, <span class=\"text-sky-500\">mobile</span>, maupun <span class=\"text-sky-500\">sistem backend</span>."
+  },
+
+  "about": {
+    "title": "Tentang RHNX",
+    "description": "RHNX adalah platform modern untuk membangun website dengan cepat dan efisien. Semua dirancang untuk kecepatan dan kesederhanaan."
+  },
+
+  "ecosystem": {
+    "subtitle": "Ekosistem rhnx-api",
+    "title": "Ekosistem rhnx-api",
+    "description": "AI, Pengunduh, Pencarian, Alat, dan lainnya terhubung dalam satu platform REST API modern."
+  },
+
+  "features": {
+    "title": "",
+    "description": "Bangun lebih cepat dengan layanan API modern yang dirancang untuk kecepatan, stabilitas, dan integrasi yang mudah.",
+    "card1": "Infrastruktur yang dioptimalkan dengan respons yang ringan.pemrosesan ultra cepat,dan kinerja waktu yang stabil.",
+    "card2": "Arsitektur backend modern dengan autentikasi yang aman dan perlindungan endpoint yang andal.",
+    "card3": "Endpoint REST yang bersih dengan respons JSON ringan untuk integrasi pengembang yang lancar."
+  },
+
+  "folder": {
+    "title": "Jelajahi API Kami",
+    "description": "Jelajahi berbagai endpoint REST API, kirim request, dan lihat respon secara real-time."
+  },
+  "run": {
+    "default": {
+      "category": "MAIN MENU",
+      "title": "Oke, Ayo Kita Jelajahi!",
+      "desc": "Jelajahi berbagai endpoint REST API, kirim request, dan lihat respon secara real-time."
+    },
+
+    "ai": {
+      "category": "AI & MACHINE LEARNING",
+      "title": "Eksplorasi AI",
+      "desc": "Endpoint kecerdasan buatan seperti chatbot, image AI, text analysis, dan automasi pintar."
+    },
+
+    "tools": {
+      "category": "TOOLS",
+      "title": "Utility Tools",
+      "desc": "Berbagai tools pendukung seperti shortlink, converter, checker, dan automation API."
+    },
+
+    "downloader": {
+      "category": "DOWNLOADER",
+      "title": "Media Downloader",
+      "desc": "Download video, audio, dan media dari berbagai platform dengan mudah."
+    },
+
+    "games": {
+      "category": "GAMES & FUN",
+      "title": "Game API",
+      "desc": "Kumpulan endpoint game, hiburan, quiz, dan fitur interaktif seru lainnya."
+    },
+
+    "sticker": {
+      "category": "STICKER",
+      "title": "Sticker Generator",
+      "desc": "Buat sticker WhatsApp, edit gambar, dan generate media kreatif secara instan."
+    },
+
+    "settings": {
+      "category": "SETTINGS",
+      "title": "Pengaturan API",
+      "desc": "Kelola akun, API key, preferensi user, dan pengaturan sistem lainnya."
+    },
+
+    "info": {
+      "category": "INFORMATION",
+      "title": "Informasi & Statistik",
+      "desc": "Lihat informasi API, status server, statistik penggunaan, dan detail endpoint."
+    },
+
+    "owner": {
+      "category": "OWNER PANEL",
+      "title": "Owner Management",
+      "desc": "Endpoint khusus owner untuk mengelola admin, user, akses, dan sistem API."
+    },
+
+    "islamic": {
+      "category": "ISLAMIC",
+      "title": "Islamic Features",
+      "desc": "Fitur islami seperti jadwal sholat, doa, Al-Qur'an, hadis, dan konten religi."
+    },
+ "search": {
+      "category": "SEARCH",
+      "title": "Search API",
+      "desc": "Endpoint pencarian untuk menemukan informasi dan konten dengan cepat."
+    },
+    "example": {
+      "category": "EXAMPLE & TESTING",
+      "title": "Contoh Endpoint",
+      "desc": "Kumpulan endpoint contoh untuk testing request, parameter, dan response API."
+    }
+  },
+
+  "pricing": {
+    "title": "Paket Harga yang Fleksibel untuk Kebutuhan Anda",
+    "description": "Pilih paket API sesuai skala penggunaan Anda. Mulai dari <span class=\"text-sky-500\">gratis untuk testing</span>, hingga <span class=\"text-sky-500\">paket premium</span> dengan limit besar, performa cepat, dan dukungan prioritas."
+  },
+
+  "footer": {
+    "description": "Layanan REST API yang kuat dan modern untuk pengembang yang membutuhkan kecepatan, kesederhanaan, dan skalabilitas.",
+    "navigation": "Navigasi",
+    "settings": "Pengaturan",
+    "darkMode": "Mode Gelap",
+    "docs": "Dokumentasi",
+    "pricing": "Harga",
+    "dashboard": "Dashboard",
+    "copyright": "© 2025 RHNX. Seluruh hak cipta dilindungi."
+  }
+}

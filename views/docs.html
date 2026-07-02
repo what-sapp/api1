@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+   
+  <link rel="icon" type="image/png" sizes="32x32" href="/media/image/logo.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/media/image/logo.png">
+  <link rel="apple-touch-icon" href="/media/image/logo.png">
+  <link rel="manifest" href="./database/manifest.json">
+  <meta name="theme-color" content="#3db8f5">
+  <title>Documentation</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600&display=swap" rel="stylesheet"/>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            primary: "#00B6F1",
+            secondary: "#f1f5f9",
+            accent: "#facc15",
+            hitam: "#000000",
+          },
+          backgroundImage: {
+            'gradient-primary': 'linear-gradient(to bottom, #3db8f5, #1473e6)',
+            'gradient-red':  'linear-gradient(to bottom, #ff0000, #ffffff)',
+          },
+          fontFamily: {
+            sans: ["Outfit", "sans-serif"],
+            mono: ["Share Tech Mono"],
+          },
+        },
+      },
+      plugins: [
+        function ({ addUtilities }) {
+          addUtilities({
+            '.text-gradient-primary': {
+              background: 'linear-gradient(to bottom, #3db8f5, #1473e6)',
+              '-webkit-background-clip': 'text',
+              '-webkit-text-fill-color': 'transparent',
+            },
+            '.text-gradient-indo': {
+              background: 'linear-gradient(to bottom, #ff0000, #ffffff)',
+              '-webkit-background-clip': 'text',
+              '-webkit-text-fill-color': 'transparent',
+            },
+            '.text-gradient-yellow': {
+              background: 'linear-gradient(to bottom, #facc15, #eab308)',
+              '-webkit-background-clip': 'text',
+              '-webkit-text-fill-color': 'transparent',
+            },
+          });
+        }
+      ]
+    };
+  </script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" />
+
+  <link id="prism-dark" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" disabled />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/line-numbers/prism-line-numbers.min.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-json.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-bash.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-javascript.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/line-numbers/prism-line-numbers.min.js"></script>
+
+  <script src="https://unpkg.com/feather-icons"></script>
+
+  <style>
+    pre[class*="language-"] {
+      border-radius: .6rem;
+      padding: 1rem;
+      font-family: "Share Tech Mono", monospace;
+      font-size: .95rem;
+      line-height: 1.5;
+    }
+
+    .code-wrap { position: relative; }
+    .copy-btn {
+      position: absolute;
+      right: .5rem;
+      top: .5rem;
+      background: rgba(255,255,255,0.85);
+      border-radius: .4rem;
+      padding: .28rem .5rem;
+      font-size: .8rem;
+      cursor: pointer;
+      border: 1px solid rgba(0,0,0,0.06);
+      backdrop-filter: blur(4px);
+    }
+    .dark .copy-btn {
+      background: rgba(20,20,20,0.6);
+      color: #e6eef6;
+      border: 1px solid rgba(255,255,255,0.04);
+    }
+
+    @media (max-width: 640px) {
+      main { padding: 1.25rem; }
+    }
+  </style>
+</head>
+<body class="bg-secondary text-gray-800 dark:bg-gray-900 dark:text-gray-100 font-mono">
+
+  <main class="max-w-5xl mx-auto px-6 py-12 space-y-16">
+  <div class="max-w-7xl mx-auto px-4 pt-2 pb-6">
+    <div
+      class="flex items-center gap-2 text-sm text-gray-500 dark:text-gray-400 mb-2"
+    >
+      <a
+      href="/"
+      class="hover:text-gray-900 dark:hover:text-white transition"
+    >
+      Home
+    </a>
+      <i data-feather="chevron-right" class="w-4 h-4"></i>
+      <span class="text-gray-900 dark:text-white font-medium">Docs</span>
+    </div>
+
+   <div class="h-[0.5px] bg-gray-300 dark:bg-gray-100 w-40 opacity-50 mb-2 md:mb-4"></div>
+
+<section id="intro" class="pt-2 mb-12">
+
+  <h1 class="text-4xl font-bold mb-2 text-gradient-primary">
+    API Documentation
+  </h1>
+
+
+      <p class="text-sm text-gray-600 dark:text-gray-300 max-w-2xl leading-relaxed">
+        Selamat datang — dokumentasi ini menjelaskan endpoint, autentikasi, contoh request/response, serta error handling.
+        Semua code block sudah diberi highlight syntax untuk memudahkan pembacaan.
+      </p>
+      <div class="mt-4 flex items-center gap-3">
+        <button id="toggle-theme" class="px-3 py-1 rounded-md border text-sm">Toggle Dark</button>
+        <span class="text-xs text-gray-500 dark:text-gray-400">Tip: tekan tombol untuk ganti tema</span>
+      </div>
+    </section>
+ </main>
+   <section id="auth" class=" px-6 -mt-12">
+      <h2 class="text-2xl font-semibold mb-3">🔑 Authentication</h2>
+      <p class="leading-relaxed mb-3">
+        Gunakan API Key (Bearer token) pada header <code>Authorization</code> untuk mengakses endpoint ber-protected.
+      </p>
+
+      <div class="code-wrap mb-6">
+        <button class="copy-btn" data-target="curl-auth">Copy</button>
+        <pre id="curl-auth" class="line-numbers language-bash"><code># Bash / cURL example
+curl -X GET "http://api.rhnx.xyz/api/profile?apikeykey=YOUR_API_KEY" \
+  -H "x-api-key: YOUR_API_KEY"</code></pre>
+      </div>
+
+      <div class="code-wrap">
+        <button class="copy-btn" data-target="js-auth">Copy</button>
+        <pre id="js-auth" class="line-numbers language-javascript"><code>
+const fetch = require('node-fetch');
+(async () => {
+  const res = await fetch('http://api.rhnx.xyz/api/aitester?key=YOUR_API_KEY', {
+    headers: { 'x-api-key': 'YOUR_API_KEY' }
+  });
+  const data = await res.json();
+  console.log(data);
+})();</code></pre>
+      </div>
+    </section>
+      
+    <section id="baseurl" class=" px-6 -mt-12">
+      <h2 class="text-2xl font-semibold mb-3">🌍 Base URL</h2>
+      <p class="mb-2">Gunakan base URL berikut untuk semua request:</p>
+
+      <div class="code-wrap">
+        <button class="copy-btn" data-target="base-url">Copy</button>
+        <pre id="base-url" class="line-numbers language-json"><code>{
+  "base_url": "https://api.rhnx.xyz/api/"
+}</code></pre>
+      </div>
+    </section>
+
+    <section id="endpoints"class=" px-6 mt-5">
+      <h2 class="text-2xl font-semibold mb-4">📂 Endpoints</h2>
+
+      <article class="mb-8">
+  
+        <p class="text-sm text-gray-600 dark:text-gray-300 mb-3">Ambil info user. Mendukung query<code>?</code>.</p>
+
+        <div class="code-wrap mb-3">
+          <button class="copy-btn" data-target="req-get-users">Copy</button>
+          <pre id="req-get-users" class="line-numbers language-bash"><code>curl -X GET "http://api.rhnx.xyz/profile?key=YOUR_API_KEY" \
+  -H "x-api-key: YOUR_API_KEY"<code></pre>
+        </div>
+
+        <div class="code-wrap">
+          <button class="copy-btn" data-target="res-get-users">Copy</button>
+          <pre id="res-get-users" class="line-numbers language-json"><code>
+{
+  "creator": "Raihan Fadillah",
+  "success": true,
+  "data": {
+    "id": "usr_FtWRqxdM",
+    "name": "Servis Rangelofficial",
+    "username": "servisrangelofficial",
+    "email": "youremail@gmail.com",
+    "lastLogin": "2026-01-23 19:08:03",
+    "createdAt": "2026-01-05 23:14:27"
+  }
+}
+</code></pre>
+        </div>
+      </article>
+    </section>
+
+<section id="question" class=" px-6 mt-5">
+  <h2 class="text-2xl font-semibold mb-4">❓ Pertanyaan Umum</h2>
+
+  <article class="mb-8">
+    <h3 class="font-semibold text-lg mb-2">
+      Apakah ada endpoint yang bisa diakses tanpa API Key?
+    </h3>
+
+    <p class="text-sm text-gray-600 dark:text-gray-300 mb-3">
+      Ya, <strong>beberapa endpoint dapat diakses secara gratis tanpa menggunakan API Key</strong>.
+      Endpoint seperti ini biasanya bersifat publik dan tidak memerlukan autentikasi tambahan.
+    </p>
+
+    <p class="text-sm text-gray-600 dark:text-gray-300 mb-4">
+      <strong>Cara membedakannya:</strong><br />
+      Jika pada URL atau dokumentasi endpoint terdapat parameter <code>apikey</code> atau header
+      <code>x-api-key</code>, maka API Key wajib digunakan.  
+      Jika tidak ada, berarti endpoint tersebut bisa diakses tanpa API Key.
+    </p>
+
+    <div class="bg-gray-200 dark:bg-gray-800 border-l-4 border-sky-500 p-3 mb-4 text-sm text-gray-700 dark:text-gray-300">
+      Contoh endpoint <strong>tanpa API Key</strong>:
+    </div>
+
+    <div class="code-wrap mb-3">
+      <button class="copy-btn" data-target="req-free-endpoint">Copy</button>
+      <pre id="req-free-endpoint" class="line-numbers language-bash"><code>
+curl -X GET "http://api.rhnx.xyz/profile"
+</code></pre>
+    </div>
+
+    <div class="code-wrap">
+      <button class="copy-btn" data-target="res-free-endpoint">Copy</button>
+      <pre id="res-free-endpoint" class="line-numbers language-json"><code>
+{
+  "creator": "Raihan Fadillah",
+  "success": true,
+  "data": {
+    "id": "usr_FtWRqxdM",
+    "name": "Servis Rangelofficial",
+    "username": "servisrangelofficial",
+    "email": "youremail@gmail.com",
+    "lastLogin": "2026-01-23 19:08:03",
+    "createdAt": "2026-01-05 23:14:27"
+  }
+}
+</code></pre>
+    </div>
+  </article>
+</section>
+
+    <section id="response" class=" px-6 mt-5">
+      <h2 class="text-2xl font-semibold mb-3">📊 Response Codes</h2>
+      <ul class="list-disc pl-6 space-y-1 text-sm text-gray-700 dark:text-gray-300">
+        <li><code>200 OK</code> – Request berhasil</li>
+        <li><code>201 Created</code> – Data berhasil dibuat</li>
+        <li><code>400 Bad Request</code> – Parameter salah</li>
+        <li><code>401 Unauthorized</code> – API Key tidak valid</li>
+        <li><code>404 Not Found</code> – Resource tidak ditemukan</li>
+        <li><code>500 Internal Server Error</code> – Kesalahan server</li>
+      </ul>
+    </section>
+
+<section id="errors" class="mt-5 max-w-4xl mx-auto px-4 py-8">
+  <h2 class="text-2xl font-semibold mb-3">⚠️ Error Handling</h2>
+  <p class="mb-4 text-gray-700 dark:text-gray-300">
+    Beberapa endpoint memerlukan <span class="text-yellow-400 font-semibold">API Key</span>. 
+    Untuk mendapatkan API Key, silakan <span class="font-semibold">daftar</span> dan <span class="font-semibold">login</span> terlebih dahulu.  
+    Selain itu, terdapat endpoint yang hanya bisa diakses oleh <span class="text-red-400">owner</span>, 
+    khusus <span class="text-green-400">premium</span>, atau memiliki <span class="text-blue-400">limit penggunaan</span>.  
+    Limit gratis yang kami berikan adalah <span class="font-semibold">500 request/hari</span>.
+  </p>
+
+  <div class="code-wrap mb-6">
+    <h3 class="text-lg font-semibold mb-2">API Key diperlukan</h3>
+    <button class="copy-btn" data-target="err-required">Copy</button>
+    <pre id="err-required" class="line-numbers language-json"><code>{
+  "creator": "Raihan Fadillah",
+  "status": false,
+  "info": {
+    "message": "API Key Diperlukan silakan Login terlebih dahulu"
+  }
+}</code></pre>
+  </div>
+
+  <div class="code-wrap mb-6">
+    <h3 class="text-lg font-semibold mb-2">API Key tidak valid</h3>
+    <button class="copy-btn" data-target="err-invalid">Copy</button>
+    <pre id="err-invalid" class="line-numbers language-json"><code>{
+  "creator": "Raihan Fadillah",
+  "status": false,
+  "info": {
+    "message": "Invalid API Key"
+  }
+}</code></pre>
+  </div>
+
+  <div class="code-wrap mb-6">
+    <h3 class="text-lg font-semibold mb-2">Hanya owner yang dapat mengakses endpoint ini</h3>
+    <button class="copy-btn" data-target="err-owner">Copy</button>
+    <pre id="err-owner" class="line-numbers language-json"><code>{
+  "creator": "Raihan Fadillah",
+  "status": false,
+ "info": {
+    "message": "Fitur Husus Owner "
+  }
+}</code></pre>
+  </div>
+
+  <div class="code-wrap mb-6">
+    <h3 class="text-lg font-semibold mb-2">Fitur ini hanya untuk user premium</h3>
+    <button class="copy-btn" data-target="err-premium">Copy</button>
+    <pre id="err-premium" class="line-numbers language-json"><code>{
+  "creator": "Raihan Fadillah",
+  "status": false,
+  "info": {
+    "message": "Fitur Husus user premium"
+  }
+}</code></pre>
+  </div>
+
+  <div class="code-wrap">
+    <h3 class="text-lg font-semibold mb-2">Batas penggunaan habis</h3>
+    <button class="copy-btn" data-target="err-limit">Copy</button>
+    <pre id="err-limit" class="line-numbers language-json"><code>{
+  "creator": "Raihan Fadillah",
+  "status": false,
+  "info": {
+    "message": "Batas penggunaan habis",
+    "details": "Upgrade ke premium untuk unlimited request"
+  }
+}</code></pre>
+  </div>
+</section>
+    
+<section id="sosmed" class=" px-6 pb-5 ">
+  <h2 class="text-2xl font-semibold mb-3">💬 Tutorial & Obrolan</h2>
+  <p class="text-sm text-gray-700 dark:text-gray-300 mb-4">
+    Jika kamu masih bingung, butuh penjelasan lebih detail, atau ingin ngobrol langsung, 
+    silakan hubungi kami melalui sosial media berikut:
+  </p>
+  <ul class="space-y-2 text-sm text-gray-700 dark:text-gray-300">
+    <li class="flex items-center gap-2">
+      <i class="fa-brands fa-youtube text-red-600"></i>
+      <a href="https://www.youtube.com/@rhnxofficial" target="_blank" class="hover:underline">YouTube</a>
+    </li>
+    <li class="flex items-center gap-2">
+      <i class="fa-brands fa-tiktok text-gray-900 dark:text-white"></i>
+      <a href="https://www.tiktok.com/@rhnxofficial" target="_blank" class="hover:underline">TikTok</a>
+    </li>
+    <li class="flex items-center gap-2">
+      <i class="fa-brands fa-instagram text-pink-500"></i>
+      <a href="https://www.instagram.com/rhnxofficial" target="_blank" class="hover:underline">Instagram</a>
+    </li>
+    <li class="flex items-center gap-2">
+      <i class="fa-brands fa-whatsapp text-green-500"></i>
+      <a href="https://chat.whatsapp.com/EcaZKuqXYGk8DL35OUCetp" target="_blank" class="hover:underline">WhatsApp</a>
+    </li>
+    <li class="flex items-center gap-2">
+      <i class="fa-solid fa-bullhorn text-blue-500"></i>
+      <a href="https://whatsapp.com/channel/0029VaAyQPOAjPXPIzpWKX3K" target="_blank" class="hover:underline">Saluran</a>
+    </li>
+  </ul>
+
+    </section>
+
+ 
+
+  <script>
+    document.querySelectorAll('.copy-btn').forEach(btn => {
+      btn.addEventListener('click', async (e) => {
+        const id = btn.getAttribute('data-target');
+        const el = document.getElementById(id);
+        if (!el) return;
+       
+        const code = el.innerText;
+        try {
+          await navigator.clipboard.writeText(code);
+          btn.innerText = 'Copied ✓';
+          setTimeout(() => btn.innerText = 'Copy', 1500);
+        } catch (err) {
+          btn.innerText = 'Err';
+          setTimeout(() => btn.innerText = 'Copy', 1500);
+        }
+      });
+    });
+      
+    const toggle = document.getElementById('toggle-theme');
+    const prismDark = document.getElementById('prism-dark');
+
+    function setDarkMode(isDark) {
+      if (isDark) {
+        document.documentElement.classList.add('dark');
+        prismDark.removeAttribute('disabled');
+        toggle.innerText = 'Toggle Light';
+      } else {
+        document.documentElement.classList.remove('dark');
+        prismDark.setAttribute('disabled', 'true');
+        toggle.innerText = 'Toggle Dark';
+      }
+    }
+
+  
+    const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+    setDarkMode(prefersDark);
+
+    toggle.addEventListener('click', () => {
+      const isDark = document.documentElement.classList.contains('dark');
+      setDarkMode(!isDark);
+    });
+
+    if (typeof feather !== 'undefined') {
+      feather.replace();
+    }
+  </script>
+</body>
+</html>

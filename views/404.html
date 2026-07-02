@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>404 - Halaman Tidak Ditemukan</title>
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      * {
+        box-sizing: border-box;
+        font-family: "Share Tech Mono", monospace;
+      }
+
+      body {
+        margin: 0;
+        height: 100vh;
+        background: linear-gradient(270deg, #0ea5e9, #38bdf8, #2563eb, #ffffff);
+        background-size: 600% 600%;
+        animation: gradientMove 12s ease infinite;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #fff;
+      }
+
+      @keyframes gradientMove {
+        0% {
+          background-position: 0% 50%;
+        }
+        50% {
+          background-position: 100% 50%;
+        }
+        100% {
+          background-position: 0% 50%;
+        }
+      }
+
+      .container {
+        text-align: center;
+        padding: 40px;
+        max-width: 420px;
+        background: rgba(0, 0, 0, 0.25);
+        border-radius: 20px;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+      }
+
+      h1 {
+        font-size: 96px;
+        margin: 0;
+        font-weight: 700;
+        letter-spacing: 4px;
+      }
+
+      h2 {
+        margin: 12px 0;
+        font-size: 22px;
+        opacity: 0.95;
+      }
+
+      p {
+        opacity: 0.85;
+        margin-bottom: 30px;
+        font-size: 14px;
+        line-height: 1.6;
+      }
+
+      a {
+        display: inline-block;
+        padding: 12px 28px;
+        background: #ffffff;
+        color: #2563eb;
+        border-radius: 999px;
+        text-decoration: none;
+        font-size: 14px;
+        transition: 0.25s;
+      }
+
+      a:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 12px 25px rgba(0, 0, 0, 0.3);
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <h1>404</h1>
+      <h2>HALAMAN TIDAK DITEMUKAN</h2>
+      <p>
+        Kamu salah alamat domain atau halaman yang kamu cari sudah tidak
+        tersedia.
+      </p>
+      <a href="/">KEMBALI KE BERANDA</a>
+    </div>
+  </body>
+</html>

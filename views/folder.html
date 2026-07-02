@@ -1,0 +1,701 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>rhnx-api</title>
+    <meta name="description" content="rhnxofficial REST API - Layanan API ringan, cepat, dan modern untuk developer.">
+  <meta name="keywords" content="RHNX, Rest-Api, API gratis, API Indonesia, API modern, developer, backend">
+  <meta name="author" content="Raihan Fadillah">
+  <meta name="robots" content="index, follow">
+
+  <meta property="og:title" content="rhnx-api">
+  <meta property="og:description" content="Platform modern yang menyediakan Rest-Api ringan, cepat, dan fleksibel.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://api.rhnx.xyz/">
+  <meta property="og:image" content="https://api.rhnx.xyz/media/img/banner-api.png">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="rhnx-api">
+  <meta name="twitter:description" content="Platform modern yang menyediakan Rest-Api ringan, cepat, dan fleksibel.">
+  <meta name="twitter:image" content="https://api.rhnx.xyz/media/img/banner-api.png">
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/media/img/logo.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/media/img/logo.png">
+  <link rel="apple-touch-icon" href="/media/img/logo.png">
+  <meta name="theme-color" content="#ffffff">
+    <link rel="stylesheet" href="/css/fonts.css" />
+    <link rel="stylesheet" href="/css/output.css" />
+    <link rel="stylesheet" href="/css/input.css" />
+    <link rel="stylesheet" href="/css/style.css" />
+     <link rel="stylesheet" href="/css/reveal.css" />
+   
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-markup.min.js"></script>
+<script src="https://unpkg.com/i18next@23.11.5/i18next.min.js"></script>
+
+<script src="https://unpkg.com/i18next-http-backend@2.5.0/i18nextHttpBackend.min.js"></script>
+
+<script src="https://unpkg.com/i18next-browser-languagedetector@7.2.0/i18nextBrowserLanguageDetector.min.js"></script>
+
+
+    <script src="https://unpkg.com/feather-icons"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        feather.replace();
+      });
+
+      if (localStorage.getItem("darkMode") === "enabled") {
+        document.documentElement.classList.add("dark");
+      }
+    </script>
+  </head>
+  <body
+    class="bg-gray-50 dark:bg-gray-900 min-h-screen text-gray-900 dark:text-white font-mono"
+  >
+ <header
+  id="navbar"
+  class="bg-white/80 dark:bg-gray-900/80 sticky top-0 z-30 backdrop-blur-xl transition-all duration-300"
+>
+
+    <div
+  id="navbarContainer"
+  class="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-3 items-center px-4 py-4 transition-all duration-300"
+>
+
+<div class="flex items-center gap-2 md:gap-3 min-w-0">
+  <img
+    src="/media/img/logo.png"
+    alt="Logo"
+    class="shrink-0
+           w-8 h-8
+           md:w-8 md:h-8
+           object-cover rounded-md"
+  />
+
+  <h1
+    class="truncate
+           text-gray-900 dark:text-white
+           font-black tracking-wide
+           text-lg md:text-xl"
+  >
+    RHNX-API
+  </h1>
+</div>
+  <nav
+    class="hidden md:flex items-center justify-center gap-8 text-sm font-medium"
+  >
+    <a
+      href="/"
+      data-i18n="nav.home"
+      class="text-gray-700 dark:text-gray-200 hover:text-sky-500 transition"
+    ></a>
+
+    <a
+      href="/docs"
+      data-i18n="nav.docs"
+      class="text-gray-700 dark:text-gray-200 hover:text-sky-500 transition"
+    ></a>
+
+    <a
+      href="/pricing"
+      data-i18n="nav.pricing"
+      class="text-gray-700 dark:text-gray-200 hover:text-sky-500 transition"
+    ></a>
+
+    <a
+      href="/dashboard"
+      data-i18n="nav.dashboard"
+      class="text-gray-700 dark:text-gray-200 hover:text-sky-500 transition"
+    ></a>
+  </nav>
+
+<div class="flex items-center justify-end gap-1.5 md:gap-2.5">
+
+<div class="relative">
+  <button
+    id="langButton"
+    class="flex items-center gap-1.5 
+           px-2.5 md:px-3 
+           py-2
+           rounded-lg md:rounded-xl
+           hover:bg-gray-100 dark:hover:bg-gray-800 
+           transition"
+  >
+    <i
+      data-feather="globe"
+      class="w-4 h-4 md:w-5 md:h-5 text-sky-500 dark:text-white"
+    ></i>
+
+    <span
+      id="langCode"
+      class="text-sm font-semibold text-gray-900 dark:text-white"
+    >
+      ID
+    </span>
+
+    <i
+      data-feather="chevron-down"
+      class="w-4 h-4 md:w-4.5 md:h-4.5 text-gray-900 dark:text-white"
+    ></i>
+  </button>
+
+  <div
+    id="langDropdown"
+    class="hidden absolute right-0 mt-2 
+           w-36 md:w-40
+           bg-white dark:bg-gray-800
+           border border-gray-200 dark:border-gray-700
+           rounded-xl md:rounded-2xl
+           shadow-xl overflow-hidden z-50"
+  >
+    <button
+      data-lang="id"
+      class="lang-item flex items-center gap-3 w-full 
+             px-3 md:px-4 py-2.5 md:py-3
+             text-sm text-left
+             text-gray-900 dark:text-white
+             hover:bg-gray-100 dark:hover:bg-gray-700
+             transition"
+    >
+      Indonesia
+    </button>
+
+    <button
+      data-lang="en"
+      class="lang-item flex items-center gap-3 w-full 
+             px-3 md:px-4 py-2.5 md:py-3
+             text-sm text-left
+             text-gray-900 dark:text-white
+             hover:bg-gray-100 dark:hover:bg-gray-700
+             transition"
+    >
+      English
+    </button>
+  </div>
+</div>
+
+  <button
+    id="profileButton"
+    class="flex items-center justify-center
+           w-10 h-10 md:w-11 md:h-11
+           rounded-lg md:rounded-xl
+           hover:bg-gray-100 dark:hover:bg-gray-800
+           transition"
+  >
+    <i
+      data-feather="user"
+      class="w-5 h-5 md:w-5.5 md:h-5.5 text-gray-900 dark:text-white"
+    ></i>
+  </button>
+
+  <button
+    id="menuButton"
+    class="flex md:hidden items-center justify-center
+           w-10 h-10
+           rounded-lg
+           hover:bg-gray-100 dark:hover:bg-gray-800
+           transition"
+    onclick="openSidebar()"
+  >
+    <i
+      data-feather="more-vertical"
+      class="w-5 h-5 text-gray-900 dark:text-white"
+    ></i>
+  </button>
+</div>
+
+      <div
+        id="mobileMenu"
+        class="md:hidden bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-700 hidden"
+      >
+        <nav class="flex flex-col gap-2 px-4 py-3">
+          <a href="/" data-i18n="nav.home" class="hover:text-sky-500"></a>
+          <a href="/docs" data-i18n="nav.docs" class="hover:text-sky-500"></a>
+          <a
+            href="/pricing.html"
+            data-i18n="nav.pricing"
+            class="hover:text-sky-500"
+          ></a>
+          <a
+            href="/dashboard"
+            data-i18n="nav.dashboard"
+            class="hover:text-sky-500"
+          ></a>
+        </nav>
+      </div>
+    </header>
+
+<div
+  id="fullscreenSidebar"
+  class="fixed inset-0 bg-white dark:bg-gray-900 z-50 hidden flex flex-col justify-between"
+>
+
+  <div
+    class="flex justify-between items-center 
+           px-4 py-5
+           border-b border-gray-200 dark:border-gray-800"
+  >
+   
+<div class="flex items-center gap-2 md:gap-3">
+  <img
+    src="/media/img/logo.png"
+    alt="Logo"
+    class="w-8 h-8 md:w-10 md:h-10 object-cover rounded-md"
+  />
+
+  <h1
+    class="text-gray-900 dark:text-white
+           font-black tracking-wide
+           text-lg md:text-xl"
+  >
+    RHNX-API
+  </h1>
+</div>
+
+    <button
+      onclick="closeSidebar()"
+      class="flex items-center justify-center
+             w-8 h-8
+             rounded-lg
+             hover:bg-gray-100 dark:hover:bg-gray-800
+             transition"
+    >
+      <i
+        data-feather="x"
+        class="w-4 h-4 text-gray-900 dark:text-white"
+      ></i>
+    </button>
+  </div>
+
+  <nav class="flex-1 flex items-center justify-center">
+    <div class="flex flex-col gap-8 text-center">
+
+      <a
+        href="/"
+        data-i18n="nav.home"
+        class="text-xl font-medium
+               text-gray-900 dark:text-white
+               hover:text-sky-500
+               transition-colors"
+      ></a>
+
+      <a
+        href="/docs.html"
+        data-i18n="nav.docs"
+        class="text-xl font-medium
+               text-gray-900 dark:text-white
+               hover:text-sky-500
+               transition-colors"
+      ></a>
+
+      <a
+        href="/pricing.html"
+        data-i18n="nav.pricing"
+        class="text-xl font-medium
+               text-gray-900 dark:text-white
+               hover:text-sky-500
+               transition-colors"
+      ></a>
+
+      <a
+        href="/dashboard"
+        data-i18n="nav.dashboard"
+        class="text-xl font-medium
+               text-gray-900 dark:text-white
+               hover:text-sky-500
+               transition-colors"
+      ></a>
+
+    </div>
+  </nav>
+  <div
+    class="px-4 py-5
+           border-t border-gray-200 dark:border-gray-800
+           text-center text-gray-500 dark:text-gray-400 text-xs"
+  >
+    © 2025 RHNX API
+  </div>
+</div>
+    <section
+      class="bg-white dark:bg-gray-900 border-b border-gray-200 dark:border-gray-700"
+    >
+   
+      <div class="max-w-7xl mx-auto px-4 pt-8 pb-10 md:pt-10 md:pb-14">
+        <div
+          class="flex items-center gap-2 text-sm text-gray-500 dark:text-gray-400 mb-3"
+        >
+          <span>Home</span>
+          <i data-feather="chevron-right" class="w-4 h-4"></i>
+          <span class="text-gray-900 dark:text-white font-medium">Folder</span>
+        </div>
+        <div
+          class="h-[0.5px] bg-gray-300 dark:bg-gray-700 w-3xs md:w-2xl opacity-50 mb-4 md:mb-10"
+        ></div>
+
+        <span
+          class="block text-sm font-mono text-gray-500 dark:text-gray-500 mb-2"
+        >
+          MAIN MENU
+        </span>
+        <h1
+          data-i18n="folder.title"
+          class="text-2xl md:text-3xl font-semibold tracking-tight text-gray-900 dark:text-white mb-4"
+        ></h1>
+
+        <p
+          data-i18n="folder.description"
+          class="max-w-2xl text-sm  md:text-base text-gray-600 dark:text-gray-300 leading-relaxed"
+        ></p>
+
+        <div class="mt-4 flex flex-wrap gap-4">
+          <button
+            class="bg-gray-100 dark:bg-gray-800 text-gray-900 dark:text-white font-semibold px-4 py-2 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-700 transition"
+            onclick="openChangelog()"
+          >
+            Changelog
+          </button>
+        </div>
+
+        <div
+          id="changelogModal"
+          class="fixed inset-0 flex justify-center items-start pt-20 hidden z-50"
+        >
+          <div
+            class="bg-white dark:bg-gray-900 rounded-lg shadow-lg max-w-md w-full border border-gray-200 dark:border-gray-700 overflow-hidden relative"
+          >
+            <div
+              class="bg-gray-100 dark:bg-gray-800 border-b border-gray-300 dark:border-gray-700 px-4 py-3 flex justify-between items-center"
+            >
+              <h2 class="text-xl font-bold text-gray-900 dark:text-white">
+                Changelog Fitur
+              </h2>
+              <button
+                onclick="closeChangelog()"
+                class="text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white"
+              >
+                ✕
+              </button>
+            </div>
+
+            <div class="p-6">
+              <ul
+                id="changelogList"
+                class="space-y-6 max-h-64 overflow-y-auto"
+              ></ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <main class="relative max-w-7xl mx-auto px-4 py-6 dark:bg-gray-900">
+<section
+  id="folder-section"
+  class="bg-white dark:bg-gray-900
+         rounded-b-xl
+         overflow-hidden
+         border border-gray-200 dark:border-gray-700"
+>
+
+  <div
+    class="relative overflow-hidden
+           px-5 py-4 md:px-6 md:py-5
+           bg-gray-50 dark:bg-gray-800"
+  >
+   <div
+  class="absolute top-0 right-0
+         h-24 w-24
+         rounded-full
+         bg-sky-500/20
+         dark:bg-sky-400/10
+         blur-2xl
+         pointer-events-none"
+></div>
+
+ 
+    <div class="relative z-10 flex items-center justify-between">
+
+      <div>
+        <h2
+          class="reveal-zoom delay-2
+                 text-lg md:text-xl
+                 font-black
+                 tracking-wide
+                 text-black dark:text-white"
+        >
+          FOLDERS
+        </h2>
+
+        <p
+          class="reveal-zoom delay-3
+                 mt-1 text-sm
+                 text-gray-600 dark:text-gray-400"
+        >
+          Explore available API folders
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="p-5 md:p-6">
+
+    <ul
+      id="folder-list"
+      class="reveal-up delay-4
+             divide-y divide-gray-200 dark:divide-gray-700"
+    ></ul>
+
+  </div>
+</section>
+
+<div class="hidden md:grid grid-cols-3 gap-6 mt-6">
+
+  <aside class="col-span-1">
+    <div id="folder-sidebar"></div>
+  </aside>
+
+  <section class="col-span-2">
+    <div
+      id="desktop-folder-content"
+      class="bg-white dark:bg-gray-900
+             rounded-xl
+             border border-gray-200 dark:border-gray-700
+             p-6
+             min-h-[300px]"
+    >
+      <p class="text-gray-500">
+        papan ini belum saya perbarui
+      </p>
+    </div>
+  </section>
+      </div>
+    </main>
+
+ <section
+  id="footer"
+  class="reveal-down relative w-[98%] mx-auto
+         mt-3 md:mt-4
+         overflow-hidden
+         rounded-2xl
+
+         bg-white dark:bg-gray-900
+
+         border border-gray-200
+         dark:border-gray-700"
+>
+  <div
+    class="absolute inset-0 opacity-[0.02] dark:opacity-[0.04]"
+    style="
+      background-image:
+      linear-gradient(to right, #00000010 1px, transparent 1px),
+      linear-gradient(to bottom, #00000010 1px, transparent 1px);
+      background-size: 26px 26px;
+    "
+  ></div>
+  <div
+    class="absolute top-0 left-1/2 -translate-x-1/2
+           w-[260px] h-[120px]
+           bg-sky-400/10
+           rounded-full
+           blur-2xl"
+  ></div>
+  <div
+    class="relative z-10
+           max-w-7xl mx-auto
+           px-5 md:px-8
+           pt-9 pb-7"
+  >
+    <div
+      class="grid grid-cols-1 md:grid-cols-3
+             gap-8 pb-10
+             border-b border-gray-200 dark:border-gray-800"
+    >
+      <div class="space-y-5">
+
+        <div class="flex items-center gap-3">
+          <div
+            class="w-11 h-11 rounded-full
+                   overflow-hidden
+                   border border-gray-200
+                   dark:border-gray-800
+                   bg-white dark:bg-black"
+          >
+            <img
+              src="/media/img/logo.png"
+              alt="RHNX Logo"
+              class="w-full h-full object-cover"
+            />
+          </div>
+          <div>
+            <h2
+              class="text-lg font-bold
+                     text-black dark:text-white"
+            >
+              RHNX-API
+            </h2>
+            <p
+              class="text-sm text-gray-500"
+            >
+              Modern REST API Platform
+            </p>
+          </div>
+        </div>
+        <p
+          class="text-sm leading-relaxed
+                 text-gray-600 dark:text-gray-400
+                 max-w-sm"
+          data-i18n="footer.description"
+        ></p>
+
+      </div>
+      <div class="space-y-5">
+
+        <h3
+          class="text-sm font-semibold tracking-wider uppercase
+                 text-black dark:text-white"
+          data-i18n="footer.navigation"
+        ></h3>
+
+        <div
+          class="flex flex-col gap-3
+                 text-sm text-gray-600 dark:text-gray-400"
+        >
+
+          <a
+            href="/docs.html"
+            data-i18n="footer.docs"
+            class="hover:text-sky-500 transition-colors duration-200"
+          ></a>
+
+          <a
+            href="/pricing.html"
+            data-i18n="footer.pricing"
+            class="hover:text-sky-500 transition-colors duration-200"
+          ></a>
+
+          <a
+            href="/dashboard"
+            data-i18n="footer.dashboard"
+            class="hover:text-sky-500 transition-colors duration-200"
+          ></a>
+
+        </div>
+      </div>
+      <div class="space-y-5">
+        <h3
+          class="text-sm font-semibold tracking-wider uppercase
+                 text-black dark:text-white"
+          data-i18n="footer.settings"
+        >
+          Preferences
+        </h3>
+        <div class="flex items-center gap-3">
+          <span
+            data-i18n="footer.darkMode"
+            class="text-sm text-gray-600 dark:text-gray-400"
+          ></span>
+          <label
+            class="relative inline-flex items-center cursor-pointer"
+          >
+            <input
+              type="checkbox"
+              id="footerDarkModeToggle"
+              class="sr-only peer"
+            />
+            <div
+              class="w-11 h-6 rounded-full
+                     bg-gray-300 dark:bg-gray-700
+                     peer-checked:bg-sky-500
+                     transition duration-200"
+            ></div>
+            <div
+              class="absolute left-1 top-1
+                     w-4 h-4 rounded-full
+                     bg-white
+                     transition duration-200
+                     peer-checked:translate-x-5"
+            ></div>
+          </label>
+        </div>
+        <div class="flex items-center gap-3 pt-1">
+          <a
+            href="https://github.com/rhnxofficial"
+            target="_blank"
+            class="group w-10 h-10 rounded-xl
+                   border border-gray-200 dark:border-gray-700
+                   bg-white dark:bg-gray-900
+                   flex items-center justify-center
+                   hover:text-sky-500
+                   transition duration-200"
+          >
+            <i
+              data-feather="github"
+              class="w-5 h-5"
+            ></i>
+          </a>
+          <a
+            href="https://wa.me/6281316643491"
+            target="_blank"
+            class="group w-10 h-10 rounded-xl
+                   border border-gray-200 dark:border-gray-700
+                   bg-white dark:bg-gray-900
+                   flex items-center justify-center
+                   hover:text-sky-500
+                   transition duration-200"
+          >
+            <i
+              data-feather="message-circle"
+              class="w-5 h-5"
+            ></i>
+          </a>
+          <a
+            href="https://youtube.com/@rhnxofficial"
+            target="_blank"
+            class="group w-10 h-10 rounded-xl
+                   border border-gray-200 dark:border-gray-700
+                   bg-white dark:bg-gray-900
+                   flex items-center justify-center
+                   hover:text-sky-500
+                   transition duration-200"
+          >
+            <i
+              data-feather="youtube"
+              class="w-5 h-5"
+            ></i>
+          </a>
+          <a
+            href="https://www.instagram.com/raihanfdilh"
+            target="_blank"
+            class="group w-10 h-10 rounded-xl
+                   border border-gray-200 dark:border-gray-700
+                   bg-white dark:bg-gray-900
+                   flex items-center justify-center
+                   hover:text-sky-500
+                   transition duration-200"
+          >
+            <i
+              data-feather="instagram"
+              class="w-5 h-5"
+            ></i>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div
+      class="pt-6 flex flex-col md:flex-row
+             items-center justify-between gap-4"
+    >
+      <div
+        data-i18n="footer.copyright"
+        class="text-sm text-gray-500"
+      ></div>
+    </div>
+  </div>
+</section>
+    <script src="/js/reveal.js"></script>
+    <script src="/js/navbar.js"></script>
+    <script src="/js/script.js"></script>
+    <script src="/js/folder.js"></script>
+    <script src="./js/i18n.js"></script>
+  </body>
+</html>

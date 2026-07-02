@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Profile</title>
+
+    <link rel="stylesheet" href="/css/fonts.css" />
+    <link rel="stylesheet" href="/css/output.css" />
+    <link rel="stylesheet" href="/css/input.css" />
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/reveal.css" />
+    <script src="https://unpkg.com/i18next@23.11.5/i18next.min.js"></script>
+    <script src="https://unpkg.com/i18next-http-backend@2.5.0/i18nextHttpBackend.min.js"></script>
+    <script src="https://unpkg.com/i18next-browser-languagedetector@7.2.0/i18nextBrowserLanguageDetector.min.js"></script>
+    <script src="https://unpkg.com/feather-icons"></script>
+  </head>
+  <body class="bg-gray-100 dark:bg-gray-900 font-mono">
+    <nav
+      class="fixed w-full flex justify-between items-center px-6 py-4 bg-transparent z-20"
+    >
+      <h1 class="text-xl font-bold text-white">Profile</h1>
+      <div class="flex items-center gap-4 relative">
+        <button class="text-white" id="btn-notif" title="Notifications">
+          <i data-feather="bell" class="w-5 h-5"></i>
+        </button>
+        <div class="relative">
+          <button id="btn-more" class="text-white" title="More">
+            <i data-feather="more-vertical" class="w-5 h-5"></i>
+          </button>
+          <div
+            id="dropdown"
+            class="absolute right-0 mt-2 w-40 bg-white dark:bg-gray-800 shadow-lg rounded-md hidden z-30"
+          >
+            <button
+              id="logout"
+              class="w-full text-left px-4 py-2 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
+            >
+              Logout
+            </button>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <div class="relative w-full h-40 md:h-64 lg:h-72">
+      <img
+        src="/media/img/sampul.jpeg"
+        alt="Sampul"
+        class="w-full h-full object-cover"
+      />
+      <div class="absolute inset-0 bg-black/10"></div>
+    </div>
+
+    <div class="relative flex justify-center">
+      <div class="absolute -top-16 z-30">
+        <div class="relative w-36 h-36">
+          <img
+            id="avatar"
+            src="https://files.catbox.moe/9ceimm.png"
+            alt="Avatar"
+            class="w-36 h-36 rounded-full border-4 border-white dark:border-gray-800 object-cover"
+          />
+          <button
+            id="editAvatar"
+            class="absolute bottom-0 right-0 bg-sky-500 text-white p-2 rounded-full shadow-lg hover:bg-sky-600 flex items-center justify-center"
+            title="Edit Avatar & Profile"
+          >
+            <i data-feather="edit-3" class="w-4 h-4"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div
+      class="bg-white dark:bg-gray-800 shadow-lg w-full text-center overflow-visible relative z-10 -mt-10"
+    >
+      <div class="p-6 mt-10 space-y-2">
+        <h2
+          id="name"
+          class="text-2xl font-bold text-gray-900 dark:text-white mt-16"
+        ></h2>
+        <p id="bio" class="text-gray-600 dark:text-gray-300 mt-2"></p>
+        <p id="createdAt" class="text-gray-400 dark:text-gray-500 text-sm"></p>
+      </div>
+    </div>
+
+    <section
+      id="info"
+      class="bg-white dark:bg-gray-800 shadow-lg w-full p-6 rounded-b-xl grid grid-cols-1 md:grid-cols-2 gap-3"
+    >
+      <div class="flex justify-between items-center">
+        <span class="text-gray-600 font-bold dark:text-gray-300">User ID:</span>
+        <span id="userId" class="text-gray-500 dark:text-gray-400 font-medium"
+          >-</span
+        >
+      </div>
+      <div class="flex justify-between items-center">
+        <span class="text-gray-600 dark:text-gray-300 font-bold">Owner:</span>
+        <span id="owner" class="text-gray-500 dark:text-gray-400 font-medium"
+          >-</span
+        >
+      </div>
+      <div class="flex justify-between items-center">
+        <span class="text-gray-600 dark:text-gray-300 font-bold">Admin:</span>
+        <span id="admin" class="text-gray-500 dark:text-gray-400 font-medium"
+          >-</span
+        >
+      </div>
+      <div class="flex justify-between items-center">
+        <span class="text-gray-600 dark:text-gray-300 font-bold">Premium:</span>
+        <span id="premium" class="text-gray-500 dark:text-gray-400 font-medium"
+          >-</span
+        >
+      </div>
+      <div class="flex justify-between items-center">
+        <span class="text-gray-600 dark:text-gray-300 font-bold"
+          >Premium Start:</span
+        >
+        <span
+          id="premiumStart"
+          class="text-gray-500 dark:text-gray-400 font-medium"
+          >-</span
+        >
+      </div>
+      <div class="flex justify-between items-center">
+        <span class="text-gray-600 dark:text-gray-300 font-bold"
+          >Premium Ends:</span
+        >
+        <span
+          id="premiumEnds"
+          class="text-gray-500 dark:text-gray-400 font-medium"
+          >-</span
+        >
+      </div>
+      <div class="flex justify-between items-center">
+        <span class="text-gray-600 dark:text-gray-300 font-bold">Limit:</span>
+        <span id="limit" class="text-gray-500 dark:text-gray-400 font-medium"
+          >-</span
+        >
+      </div>
+      <div class="flex justify-between items-center">
+        <span class="text-gray-600 dark:text-gray-300 font-bold">Phone:</span>
+        <div class="flex items-center gap-2">
+          <span id="phone" class="text-gray-500 dark:text-gray-400 font-medium"
+            >-</span
+          >
+          <button
+            id="setPhone"
+            class="bg-sky-500 text-white p-2 rounded hover:bg-sky-600"
+          >
+            Set
+          </button>
+        </div>
+      </div>
+      <div class="flex justify-between items-center">
+        <span class="text-gray-600 dark:text-gray-300 font-bold">Your IP:</span>
+        <span id="ip" class="text-gray-500 dark:text-gray-400 font-medium"
+          >-</span
+        >
+      </div>
+      <div class="flex justify-between items-center">
+        <span class="text-gray-600 dark:text-gray-300 font-bold">Email:</span>
+        <span id="email" class="text-gray-500 dark:text-gray-400 font-medium"
+          >-</span
+        >
+      </div>
+
+      <div class="flex justify-between items-center md:col-span-2">
+        <span class="text-gray-600 dark:text-gray-300 font-bold">API Key:</span>
+        <div class="flex items-center gap-2 flex-1 ml-4">
+          <input
+            id="userApikey"
+            type="text"
+            readonly
+            class="bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-200 p-2 rounded flex-1 font-mono"
+          />
+          <button
+            id="copyApikey"
+            class="bg-sky-500 text-white p-2 rounded hover:bg-sky-600"
+          >
+            <i data-feather="copy" class="w-4 h-4"></i>
+          </button>
+        </div>
+      </div>
+    </section>
+   
+    <script src="/js/script.js"></script>
+    <script src="/js/profile.js"></script>
+  </body>
+</html>

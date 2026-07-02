@@ -1,0 +1,54 @@
+[
+  {
+    "name": "Example",
+    "folder": "example"
+  },
+  {
+    "name": "Ai Tools",
+    "folder": "ai"
+  },
+  {
+    "name": "Converter",
+    "folder": "converter"
+  },
+  {
+    "name": "Islamic",
+    "folder": "islamic"
+  },
+  {
+    "name": "Downloader",
+    "folder": "downloader"
+  },
+  {
+    "name": "Games",
+    "folder": "games"
+  },
+  {
+    "name": "Sticker",
+    "folder": "sticker"
+  },
+  {
+    "name": "Settings",
+    "folder": "settings"
+  },
+  {
+    "name": "Info",
+    "folder": "info"
+  },
+  {
+    "name": "Owner",
+    "folder": "owner"
+  },
+  {
+    "name": "Tools",
+    "folder": "tools"
+  },
+  {
+    "name": "Search",
+    "folder": "search"
+  },
+   {
+    "name": "Uploader",
+    "folder": "uploader"
+  }
+]

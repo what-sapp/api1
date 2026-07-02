@@ -1,0 +1,11 @@
+[
+  {
+    "id": "RPT-ct886lqo",
+    "endpoint": "/api/ai/unwatermark",
+    "method": "POST",
+    "type": "error",
+    "detail": "m",
+    "output": "{\n  \"creator\": \"Raihan Fadillah\",\n  \"status\": false,\n  \"info\": {\n    \"message\": \"API Key diperlukan, silakan login terlebih dahulu\"\n  }\n}",
+    "createdAt": "2026-05-30T08:17:37.278Z"
+  }
+]

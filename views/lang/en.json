@@ -1,0 +1,124 @@
+{
+  "nav": {
+    "home": "Home",
+    "docs": "Documentation",
+    "pricing": "Pricing",
+    "dashboard": "Dashboard"
+  },
+
+  "home": {
+    "title": "Find, Access, and Use APIs to Build Your Projects or Applications.",
+    "description": "A Web API platform providing ready-to-use endpoints that are fast, reliable, and easy to integrate into <span class=\"text-sky-500\">web applications</span>, <span class=\"text-sky-500\">mobile apps</span>, and <span class=\"text-sky-500\">backend systems</span>."
+  },
+
+  "about": {
+    "title": "About RHNX",
+    "description": "RHNX is a modern platform designed to help you build websites quickly and efficiently. Everything is crafted for speed and simplicity."
+  },
+
+  "ecosystem": {
+    "subtitle": "REST-api Ecosystem",
+    "title": "REST-API ecosystem",
+    "description": "AI, Downloader, Search, Tools and more connected in one modern REST API platform."
+  },
+
+  "features": {
+    "title": "",
+    "description": "Build faster with modern API services designed for speed, stability, and easy integration",
+    "card1": " Optimized infrastructure with lightweight responses,ultra fast processing,and stable real-time performance.",
+    "card2": "Modern backend architecture with secure authentication and reliable endpoint protection.",
+    "card3": "Clean REST endpoints with lightweight JSON responses for seamless developer integration."
+  },
+
+  "folder": {
+    "title": "Alright, Let's Explore!",
+    "description": "Explore various REST API endpoints, send requests, and view responses in real time."
+  },
+
+  "run": {
+    "default": {
+      "category": "MAIN MENU",
+      "title": "Alright, Let's Explore!",
+      "desc": "Explore various REST API endpoints, send requests, and view responses in real-time."
+    },
+
+    "ai": {
+      "category": "AI & MACHINE LEARNING",
+      "title": "Explore AI",
+      "desc": "Artificial intelligence endpoints such as chatbots, AI image tools, text analysis, and smart automation."
+    },
+
+    "tools": {
+      "category": "TOOLS",
+      "title": "Utility Tools",
+      "desc": "Useful utilities including shortlink generators, converters, checkers, and automation APIs."
+    },
+
+    "downloader": {
+      "category": "DOWNLOADER",
+      "title": "Media Downloader",
+      "desc": "Download videos, audio, and media from various platforms easily."
+    },
+
+    "games": {
+      "category": "GAMES & FUN",
+      "title": "Game API",
+      "desc": "Collection of game endpoints, entertainment features, quizzes, and interactive fun APIs."
+    },
+
+    "sticker": {
+      "category": "STICKER",
+      "title": "Sticker Generator",
+      "desc": "Create WhatsApp stickers, edit images, and generate creative media instantly."
+    },
+
+    "settings": {
+      "category": "SETTINGS",
+      "title": "API Settings",
+      "desc": "Manage accounts, API keys, user preferences, and other system configurations."
+    },
+
+    "info": {
+      "category": "INFORMATION",
+      "title": "Information & Statistics",
+      "desc": "View API information, server status, usage statistics, and endpoint details."
+    },
+
+    "owner": {
+      "category": "OWNER PANEL",
+      "title": "Owner Management",
+      "desc": "Special owner endpoints to manage admins, users, permissions, and API systems."
+    },
+
+    "islamic": {
+      "category": "ISLAMIC",
+      "title": "Islamic Features",
+      "desc": "Islamic features such as prayer schedules, duas, Qur'an, hadith, and religious content."
+    },
+   "search": {
+      "category": "SEARCH",
+      "title": "Search API",
+      "desc": "Search endpoints to quickly find information and content."
+    },
+    "example": {
+      "category": "EXAMPLE & TESTING",
+      "title": "Example Endpoints",
+      "desc": "Example endpoints for testing requests, parameters, and API responses."
+    }
+  },
+  "pricing": {
+    "title": "Flexible Pricing Plans for Your Needs",
+    "description": "Choose an API plan that matches your usage scale. Start with <span class=\"text-sky-500\">free access for testing</span>, or upgrade to <span class=\"text-sky-500\">premium plans</span> with higher limits, faster performance, and priority support."
+  },
+
+  "footer": {
+    "description": "Powerful and modern REST API services built for developers who need speed, simplicity, and scalability.",
+    "navigation": "Navigation",
+    "settings": "Settings",
+    "darkMode": "Dark Mode",
+    "docs": "Documentation",
+    "pricing": "Pricing",
+    "dashboard": "Dashboard",
+    "copyright": "© 2025 RHNX. All rights reserved."
+  }
+}
